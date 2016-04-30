@@ -17,10 +17,28 @@ void configure_buttons(void){
 	SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK;
 	
 	//Set up each pin as GPIO output
-	PORTC->PCR[3] |= PORT_PCR_MUX(001);
-	PTC->PDDR |= (0 << 3);
+	PORTC->PCR[BT2] |= PORT_PCR_MUX(001);
+	PTC->PDDR |= (0 << BT2);
 	
-	//Pullup each pin to logic 1
-	PORTC->PCR[3] |= (1 << 1);
-	PORTC->PCR[3] |= 1;
+	PORTC->PCR[BT1] |= PORT_PCR_MUX(001);
+	PTC->PDDR |= (0 << BT1);
+	
+	//Pulldown each pin to logic 0
+	PORTC->PCR[BT2] |= (1 << 1);
+	PORTC->PCR[BT2] |= 0;	
+	PORTC->PCR[BT1] |= (1 << 1);
+	PORTC->PCR[BT1] |= 0;
+	
+	
+	//Enable Interrupts on Rising
+	PORTC->PCR[BT2] |= PORT_PCR_IRQC(1001);
+	PORTC->PCR[BT2] |= (1 << 24);
+	
+	PORTC->PCR[BT1] |= PORT_PCR_IRQC(1001);
+	PORTC->PCR[BT1] |= (1 << 24);
+	
+	//Enable PortC's IRQ Handler
+	NVIC_EnableIRQ(PORTC_IRQn);
 }
+
+
