@@ -8,3 +8,18 @@
 #include "Buttons.h"
 
 
+/*
+*		Main Function
+*/
+int main(void){
+	
+	//Test pullup
+	configure_buttons();
+	while(1);
+	
+	
+	
+	
+	
+	return 0;
+}
