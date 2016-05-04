@@ -13,10 +13,10 @@
 * Pullup each pin to logic 1 - Check for presses interrupts on falling edge
 */
 void configure_buttons(void){
-	//Enable power to ports
+	//Enable power to port C
 	SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK;
 	
-	//Set up each pin as GPIO output
+	//Set up each pin as GPIO input
 	PORTC->PCR[BT2] |= PORT_PCR_MUX(001);
 	PTC->PDDR |= (0 << BT2);
 	

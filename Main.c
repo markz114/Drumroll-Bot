@@ -7,10 +7,13 @@
 
 #include "Buttons.h"
 #include "LED.h"
+#include "Servo.h"
 
 volatile int intflag = 0;
 volatile int intflag2 = 0;
 volatile int counter = 0;
+
+volatile int servo1_high = 0; //0 if low, 1 if high 
 
 /*
 *		Main Function
@@ -30,7 +33,7 @@ int main(void){
 
 
 /*
-*	Intterrupt Handler for Buttons
+*	Interrupt Handler for Buttons
 */
 void PORTC_IRQHandler(void)
 {
@@ -60,5 +63,12 @@ void PORTC_IRQHandler(void)
 	PORTC->PCR[BT1] |= (1 << 24);
 	PORTC->PCR[BT2] |= (1 << 24);
 	
+}
+
+/*
+*	Interrupt Handler for servo 1
+*/
+void PIT0_IRQHandler(void){
+
 }
 
