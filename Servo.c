@@ -18,10 +18,12 @@ void servo_init(void){
 	//Set up each pin as GPIO output
 	PORTD->PCR[SERVO1] |= PORT_PCR_MUX(001);
 	PTD->PDDR |= (1 << SERVO1);
+	PTD->PDOR &= ~(1 << SERVO1); //Initialize pin to 0
 	PORTD->PCR[SERVO1] &= ~(1 << PORT_PCR_SRE_SHIFT); //Configure fast slew rate
 	
 	PORTD->PCR[SERVO2] |= PORT_PCR_MUX(001);
 	PTD->PDDR |= (1 << SERVO2);
+	PTD->PDOR &= ~(1 << SERVO2); //Initialize pin to 0
 	PORTD->PCR[SERVO2] &= ~(1 << PORT_PCR_SRE_SHIFT); //Configure fast slew rate
 }
 
@@ -30,19 +32,20 @@ void servo_init(void){
 * Correct periods to control the servo positions!
 */
 void servo_setup_timers(void){
+	int default_position;
 	SIM->SCGC6 |= SIM_SCGC6_PIT_MASK; // Enable Clock to PIT
 	PIT->MCR = 0x0; // Enables PIT timer, allows running in debug mode
-	int default_position = servo_get_high(90);  // Sets both servos to 90 degrees
+	default_position = servo_get_high(90);  // Sets both servos to 90 degrees
 	
 	// Set up PIT0 and PIT1
 	PIT->CHANNEL[0].LDVAL = default_position;
 	PIT->CHANNEL[0].TCTRL = 3;
-	PIT->CHANNEL[1].LDVAL = default_position;
-	PIT->CHANNEL[1].TCTRL = 3;
+	//PIT->CHANNEL[1].LDVAL = default_position;
+	//PIT->CHANNEL[1].TCTRL = 3;
 	
 	//Enable interrupts on PIT0 and PIT1
 	NVIC_EnableIRQ(PIT0_IRQn);
-	NVIC_EnableIRQ(PIT1_IRQn);
+	//NVIC_EnableIRQ(PIT1_IRQn);
 }
 
 
@@ -61,7 +64,9 @@ int servo_get_high(int angle){
 *	Takes in load value of high pulse
 * Returns integer corresponding to appropriate low load value
 */
-int servo_get_low(int high_load_val){
+int servo_get_low(int angle){
+	int high_load_val = servo_get_high(angle);
 	int low_load_val = PERIOD - high_load_val;
 	return low_load_val;
 }
+

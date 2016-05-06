@@ -13,7 +13,8 @@ volatile int intflag = 0;
 volatile int intflag2 = 0;
 volatile int counter = 0;
 
-volatile int servo1_high = 0; //0 if low, 1 if high 
+volatile int is_servo1_high = 0; //0 if low, 1 if high 
+int servo_pos = 0;
 
 /*
 *		Main Function
@@ -24,7 +25,8 @@ int main(void){
 	configure_buttons();
 	setup_LED();
 
-	
+	servo_init();
+	servo_setup_timers();
 	while(1);
 	
 	return 0;
@@ -69,6 +71,31 @@ void PORTC_IRQHandler(void)
 *	Interrupt Handler for servo 1
 */
 void PIT0_IRQHandler(void){
-
+	int val;
+	counter++;
+	PIT->CHANNEL[0].TCTRL = 0; //Disable Timer
+	switch(is_servo1_high){
+		
+		case 0:
+			//Load high timer value
+			val = servo_get_high(servo_pos);
+			
+			//Write high
+			PTD->PDOR |= (1 << SERVO1); //Write a high value
+			is_servo1_high = 1;
+		
+			break;
+		case 1:
+			val = servo_get_low(servo_pos);
+			//Write low
+			PTD->PDOR &= ~(1 << SERVO1);
+			is_servo1_high = 0;
+			break;
+	}
+		
+	PIT->CHANNEL[0].LDVAL = val; //Write appropriate timer val
+	PIT->CHANNEL[0].TFLG |= (1 << 0); //Clear flag
+	PIT->CHANNEL[0].TCTRL = 3; //Re-enable timer
+	return;
 }
 
