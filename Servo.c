@@ -33,9 +33,10 @@ void servo_init(void){
 */
 void servo_setup_timers(void){
 	int default_position;
+	servo1_angle = SERVO_NEUTRAL; 		//Initialize the start angle to 90
 	SIM->SCGC6 |= SIM_SCGC6_PIT_MASK; // Enable Clock to PIT
 	PIT->MCR = 0x0; // Enables PIT timer, allows running in debug mode
-	default_position = servo_get_high(90);  // Sets both servos to 90 degrees
+	default_position = servo_get_high(servo1_angle);  // Sets both servos to 90 degrees
 	
 	// Set up PIT0 and PIT1
 	PIT->CHANNEL[0].LDVAL = default_position;
