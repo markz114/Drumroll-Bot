@@ -23,12 +23,16 @@ void configure_buttons(void){
 	PORTC->PCR[BT1] |= PORT_PCR_MUX(001);
 	PTC->PDDR |= (0 << BT1);
 	
+	PORTC->PCR[BT3] |= PORT_PCR_MUX(001);
+	PTC->PDDR |= (0 << BT3);
+	
 	//Pulldown each pin to logic 0
 	PORTC->PCR[BT2] |= (1 << 1);
 	PORTC->PCR[BT2] |= 0;	
 	PORTC->PCR[BT1] |= (1 << 1);
 	PORTC->PCR[BT1] |= 0;
-	
+	PORTC->PCR[BT3] |= (1 << 1);
+	PORTC->PCR[BT3] |= 0;
 	
 	//Enable Interrupts on Rising
 	PORTC->PCR[BT2] |= PORT_PCR_IRQC(1001);
@@ -36,6 +40,9 @@ void configure_buttons(void){
 	
 	PORTC->PCR[BT1] |= PORT_PCR_IRQC(1001);
 	PORTC->PCR[BT1] |= (1 << 24);
+	
+	PORTC->PCR[BT3] |= PORT_PCR_IRQC(1001);
+	PORTC->PCR[BT3] |= (1 << 24);
 	
 	//Enable PortC's IRQ Handler
 	NVIC_EnableIRQ(PORTC_IRQn);

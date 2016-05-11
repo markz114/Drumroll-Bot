@@ -71,3 +71,16 @@ int servo_get_low(int angle){
 	return low_load_val;
 }
 
+/*
+* Signals servo 1 to hit
+*/
+void servo_hit_1(void){
+	
+}
+/*
+* Signals servo 2 to hit
+*/
+void servo_hit_2(void){
+	
+}
+
