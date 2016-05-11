@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Drumroll-Bot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Drumroll-Bot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Fri May 06 18:14:29 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue May 10 22:46:32 2016
 <BR><P>
 <H3>Maximum Stack Usage =         76 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -84,7 +84,7 @@ Function Pointers
  <LI><a href="#[1]">NMI_Handler</a> from startup_mk64f12.o(.text) referenced from startup_mk64f12.o(RESET)
  <LI><a href="#[3e]">PDB0_IRQHandler</a> from startup_mk64f12.o(.text) referenced from startup_mk64f12.o(RESET)
  <LI><a href="#[3a]">PIT0_IRQHandler</a> from main.o(i.PIT0_IRQHandler) referenced from startup_mk64f12.o(RESET)
- <LI><a href="#[3b]">PIT1_IRQHandler</a> from startup_mk64f12.o(.text) referenced from startup_mk64f12.o(RESET)
+ <LI><a href="#[3b]">PIT1_IRQHandler</a> from main.o(i.PIT1_IRQHandler) referenced from startup_mk64f12.o(RESET)
  <LI><a href="#[3c]">PIT2_IRQHandler</a> from startup_mk64f12.o(.text) referenced from startup_mk64f12.o(RESET)
  <LI><a href="#[3d]">PIT3_IRQHandler</a> from startup_mk64f12.o(.text) referenced from startup_mk64f12.o(RESET)
  <LI><a href="#[45]">PORTA_IRQHandler</a> from startup_mk64f12.o(.text) referenced from startup_mk64f12.o(RESET)
@@ -135,7 +135,7 @@ Global Symbols
 <P><STRONG><a name="[64]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(.text)
 </UL>
-<P><STRONG><a name="[7c]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[7d]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[66]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -145,15 +145,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[7d]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[7e]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[7e]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[7f]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[7f]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[80]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[80]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[81]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[81]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[82]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[63]"></a>init_data_bss</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, startup_mk64f12.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(.text)
@@ -383,9 +383,6 @@ Global Symbols
 <P><STRONG><a name="[3e]"></a>PDB0_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_mk64f12.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(RESET)
 </UL>
-<P><STRONG><a name="[3b]"></a>PIT1_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_mk64f12.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(RESET)
-</UL>
 <P><STRONG><a name="[3c]"></a>PIT2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_mk64f12.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(RESET)
 </UL>
@@ -527,7 +524,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_high
 </UL>
 
-<P><STRONG><a name="[82]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
+<P><STRONG><a name="[83]"></a>__I$use$fp</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, iusefp.o(.text), UNUSED)
 
 <P><STRONG><a name="[6a]"></a>_float_round</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, fepilogue.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
@@ -547,7 +544,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[83]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[84]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[73]"></a>LEDGrn_Off</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, led.o(i.LEDGrn_Off))
 <BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_LED
@@ -575,7 +572,15 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(RESET)
 </UL>
-<P><STRONG><a name="[47]"></a>PORTC_IRQHandler</STRONG> (Thumb, 120 bytes, Stack size 8 bytes, main.o(i.PORTC_IRQHandler))
+<P><STRONG><a name="[3b]"></a>PIT1_IRQHandler</STRONG> (Thumb, 162 bytes, Stack size 8 bytes, main.o(i.PIT1_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = PIT1_IRQHandler &rArr; servo_get_low &rArr; servo_get_high &rArr; __aeabi_fadd &rArr; _float_epilogue
+</UL>
+<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_low
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_high
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(RESET)
+</UL>
+<P><STRONG><a name="[47]"></a>PORTC_IRQHandler</STRONG> (Thumb, 132 bytes, Stack size 8 bytes, main.o(i.PORTC_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PORTC_IRQHandler
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEDRed_On
@@ -588,11 +593,11 @@ Global Symbols
 <P><STRONG><a name="[62]"></a>SystemInit</STRONG> (Thumb, 124 bytes, Stack size 0 bytes, system_mk64f12.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(.text)
 </UL>
-<P><STRONG><a name="[84]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[85]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[85]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[86]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[86]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[87]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[76]"></a>configure_buttons</STRONG> (Thumb, 160 bytes, Stack size 0 bytes, buttons.o(i.configure_buttons))
 <BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -619,6 +624,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_setup_timers
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_low
+<LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIT1_IRQHandler
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIT0_IRQHandler
 </UL>
 
@@ -627,17 +633,19 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_high
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIT0_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIT1_IRQHandler
+<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIT0_IRQHandler
 </UL>
 
 <P><STRONG><a name="[78]"></a>servo_init</STRONG> (Thumb, 124 bytes, Stack size 0 bytes, servo.o(i.servo_init))
 <BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[79]"></a>servo_setup_timers</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, servo.o(i.servo_setup_timers))
+<P><STRONG><a name="[79]"></a>servo_setup_timers</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, servo.o(i.servo_setup_timers))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = servo_setup_timers &rArr; servo_get_high &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_high
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_high
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -653,7 +661,11 @@ Global Symbols
 <P>
 <H3>
 Local Symbols
-</H3><P>
+</H3>
+<P><STRONG><a name="[7c]"></a>NVIC_EnableIRQ</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, servo.o(i.NVIC_EnableIRQ))
+<BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_setup_timers
+</UL>
+<P>
 <H3>
 Undefined Global Symbols
 </H3><HR></body></html>

@@ -41,12 +41,12 @@ void servo_setup_timers(void){
 	// Set up PIT0 and PIT1
 	PIT->CHANNEL[0].LDVAL = default_position;
 	PIT->CHANNEL[0].TCTRL = 3;
-	//PIT->CHANNEL[1].LDVAL = default_position;
-	//PIT->CHANNEL[1].TCTRL = 3;
+	PIT->CHANNEL[1].LDVAL = default_position;
+	PIT->CHANNEL[1].TCTRL = 3;
 	
 	//Enable interrupts on PIT0 and PIT1
 	NVIC_EnableIRQ(PIT0_IRQn);
-	//NVIC_EnableIRQ(PIT1_IRQn);
+	NVIC_EnableIRQ(PIT1_IRQn);
 }
 
 

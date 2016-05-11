@@ -2,7 +2,7 @@
 
 #ifndef DEFINITIONS_H_
 #define DEFINITIONS_H_
-	void delay(void);
+	void delay(int delay);
 	
 #define BT1	2	//Port C
 #define BT2 3 //Port C
@@ -20,5 +20,6 @@
 #define SERVO_HIT 150
 #define SERVO_NEUTRAL 90
 #define TAP_LIMIT 10		//20ms times tap_limit = how long we hold servo down
+
 
 #endif //Definitions_H_
