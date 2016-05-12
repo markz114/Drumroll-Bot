@@ -41,7 +41,7 @@ volatile int state = 0;
 *		Main Function
 */
 int main(void){
-	
+	beat_t* current;
 	/**********************Configure Timers, Buttons, Servos********************************/
 	//Test pullup
 	configure_buttons();
@@ -70,11 +70,25 @@ int main(void){
 	
 	//Now keep walking through the beat list and replay each beat
 	while(1){
+		time_ms = 0;
+		PIT->CHANNEL[2].TCTRL = 3;
 		
-		LEDGrn_On();
-		delay(1000000);
-		LEDGrn_Off();
-		delay(1000000);
+		//Get the first beat and hit it
+		current = beat_list;
+		servo_hit(current->servo_num);
+		//Walk through the beat list until we reach the end
+		while(current->next != NULL){
+			current = current->next;
+			//Don't hit the next beat until the time is greater than the beat's time
+			while(current->hit_time > time_ms){
+				//Spin
+			}
+			servo_hit(current->servo_num);
+		}
+		
+		//Now at the end of the period, reset the timer and repeat
+		PIT->CHANNEL[2].TCTRL = 0;
+		
 	};
 	
 	return 0;
@@ -111,22 +125,27 @@ void PORTC_IRQHandler(void){
 	}
 	
 	//END command is hit
+	//In this case, we treat the END command as another servo hit, to put in the correct delay after the last hit
+	//Before repeating the period. Thus, we just treat "servo 3" as the END signal
 	if( (state == 1) && (PORTC->ISFR & (1<<BT3)) )
 	{
+		beat_t* end_beat = create_beat(3, time_ms);
+		if(end_beat != NULL){
+			add_to_tail(&beat_list, end_beat);
+		}
 		LEDGrn_Off();
 		state = 2;
 		//Stop the timer and reset the time
 		PIT->CHANNEL[2].TCTRL = 0;
 		time_ms = 0;
+		
 	}
 	
 	//Functions to hit servos and stuff
 	//NVIC_DisableIRQ(PORTC_IRQn);
 	//delay(500000);
-	if (PORTC-> ISFR & (1<<BT1) && (state == 0 || state == 1)){
-		tap_dat_1 = 1; 
-		//Set servo angle to hit
-		servo1_angle = SERVO_HIT;
+	if ((PORTC-> ISFR & (1<<BT1)) && (state == 0 || state == 1)){
+		servo_hit(1);
 		
 		/*
 		if(intflag == 0){
@@ -138,11 +157,11 @@ void PORTC_IRQHandler(void){
 			LEDGrn_Off();
 		}
 		*/
+		
 	}
-	else if(PORTC->ISFR & (1<<BT2) && (state == 0 || state == 1)){
-		tap_dat_2 = 1;
-		//Set servo angle to hit
-		servo2_angle = SERVO_HIT;
+	else if((PORTC->ISFR & (1<<BT2)) && (state == 0 || state == 1)){
+		servo_hit(2);
+		
 		/*
 		if(intflag2 == 0){
 			intflag2 = 1;
@@ -153,6 +172,7 @@ void PORTC_IRQHandler(void){
 			LEDRed_Off();
 		}
 		*/
+		
 	}
 	//NVIC_EnableIRQ(PORTC_IRQn);
 	//Reset the ISF

@@ -10,3 +10,6 @@
 .\objects\servo.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmSimd.h
 .\objects\servo.o: C:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include\system_MK64F12.h
 .\objects\servo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\servo.o: LED.h
+.\objects\servo.o: Definitions.h
+.\objects\servo.o: C:\Keil_v5\ARM\PACK\Keil\Kinetis_K60_DFP\1.4.0\Device\Include\MK64F12.h

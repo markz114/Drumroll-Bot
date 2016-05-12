@@ -20,7 +20,7 @@
 
 #define SERVO_HIT 150
 #define SERVO_NEUTRAL 90
-#define TAP_LIMIT 10		//20ms times tap_limit = how long we hold servo down
+#define TAP_LIMIT 8		//20ms times tap_limit = how long we hold servo down
 
 #define DELAY_TIME 15000000 //Time we wait in state 2 before playback
 

@@ -1,4 +1,5 @@
 #include "Definitions.h"
+#include "Servo.h"
 
 #ifndef BEATS_H_
 #define BEATS_H_

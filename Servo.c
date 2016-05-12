@@ -72,15 +72,39 @@ int servo_get_low(int angle){
 }
 
 /*
-* Signals servo 1 to hit
+* Signals servo to hit, depending on the servo_num
 */
-void servo_hit_1(void){
-	
+void servo_hit(int servo_num){
+		if(servo_num == 1){
+			tap_dat_1 = 1; 
+			//Set servo angle to hit
+			servo1_angle = SERVO_HIT;
+			
+			/*
+			if(intflag == 0){
+				intflag = 1;
+				LEDGrn_On();
+			}
+			else{
+				intflag = 0;
+				LEDGrn_Off();
+			}
+			*/
+		}
+		else if(servo_num == 2){
+			tap_dat_2 = 1;
+			servo2_angle = SERVO_HIT;
+			/*
+			if(intflag2 == 0){
+				intflag2 = 1;
+				LEDRed_On();
+			}
+			else{
+				intflag2 = 0;
+				LEDRed_Off();
+			}
+			*/
+		}
 }
-/*
-* Signals servo 2 to hit
-*/
-void servo_hit_2(void){
-	
-}
+
 
