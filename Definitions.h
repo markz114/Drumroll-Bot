@@ -18,8 +18,10 @@
 #define MILLISECOND  20970 //Clock cycles
 #define PERIOD 419400 //20ms 
 
-#define SERVO_HIT 150
-#define SERVO_NEUTRAL 90
+#define SERVO1_HIT 45
+#define SERVO1_NEUTRAL 105
+#define SERVO2_HIT		 60
+#define SERVO2_NEUTRAL 0
 #define TAP_LIMIT 8		//20ms times tap_limit = how long we hold servo down
 
 #define DELAY_TIME 15000000 //Time we wait in state 2 before playback

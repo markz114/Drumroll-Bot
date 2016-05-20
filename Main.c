@@ -215,7 +215,7 @@ void PIT0_IRQHandler(void){
 	//If we've counted 20x (400ms have elapsed), then raise servo to neutral pos
 	if(tap_counter_1 >= TAP_LIMIT){
 		tap_dat_1 = 0; //no more tapping :(
-		servo1_angle = SERVO_NEUTRAL;
+		servo1_angle = SERVO1_NEUTRAL;
 		tap_counter_1 = 0; //Reset Counter for future tapping
 	}
 		
@@ -257,7 +257,7 @@ void PIT1_IRQHandler(void){
 	//If we've counted 20x (400ms have elapsed), then raise servo to neutral pos
 	if(tap_counter_2 >= TAP_LIMIT){
 		tap_dat_2 = 0; //no more tapping :(
-		servo2_angle = SERVO_NEUTRAL;
+		servo2_angle = SERVO2_NEUTRAL;
 		tap_counter_2 = 0; //Reset Counter for future tapping
 	}
 		

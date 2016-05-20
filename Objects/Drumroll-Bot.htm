@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Drumroll-Bot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Drumroll-Bot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Wed May 11 21:15:10 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Thu May 19 22:16:30 2016
 <BR><P>
 <H3>Maximum Stack Usage =         76 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -569,7 +569,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mk64f12.o(RESET)
 </UL>
-<P><STRONG><a name="[3b]"></a>PIT1_IRQHandler</STRONG> (Thumb, 162 bytes, Stack size 8 bytes, main.o(i.PIT1_IRQHandler))
+<P><STRONG><a name="[3b]"></a>PIT1_IRQHandler</STRONG> (Thumb, 158 bytes, Stack size 8 bytes, main.o(i.PIT1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = PIT1_IRQHandler &rArr; servo_get_low &rArr; servo_get_high &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_low
@@ -621,7 +621,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[61]"></a>main</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = main &rArr; servo_setup_timers &rArr; servo_get_high &rArr; __aeabi_fadd &rArr; _float_epilogue
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = main &rArr; servo_setup_timers &rArr; servo_get_high &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_beat_timer
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_LED
@@ -682,8 +682,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7b]"></a>servo_setup_timers</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, servo.o(i.servo_setup_timers))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = servo_setup_timers &rArr; servo_get_high &rArr; __aeabi_fadd &rArr; _float_epilogue
+<P><STRONG><a name="[7b]"></a>servo_setup_timers</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, servo.o(i.servo_setup_timers))
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = servo_setup_timers &rArr; servo_get_high &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;servo_get_high

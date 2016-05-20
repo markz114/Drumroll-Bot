@@ -32,16 +32,19 @@ void servo_init(void){
 * Correct periods to control the servo positions!
 */
 void servo_setup_timers(void){
-	int default_position;
-	servo1_angle = SERVO_NEUTRAL; 		//Initialize the start angle to 90
+	int default_position1;
+	int default_position2;
+	servo1_angle = SERVO1_NEUTRAL; 		//Initialize the start angle to 90
+	servo2_angle = SERVO2_NEUTRAL;
 	SIM->SCGC6 |= SIM_SCGC6_PIT_MASK; // Enable Clock to PIT
 	PIT->MCR = 0x0; // Enables PIT timer, allows running in debug mode
-	default_position = servo_get_high(servo1_angle);  // Sets both servos to 90 degrees
+	default_position1 = servo_get_high(servo1_angle);  // Sets both servos to 90 degrees
+	default_position2 = servo_get_high(servo2_angle);
 	
 	// Set up PIT0 and PIT1
-	PIT->CHANNEL[0].LDVAL = default_position;
+	PIT->CHANNEL[0].LDVAL = default_position1;
 	PIT->CHANNEL[0].TCTRL = 3;
-	PIT->CHANNEL[1].LDVAL = default_position;
+	PIT->CHANNEL[1].LDVAL = default_position2;
 	PIT->CHANNEL[1].TCTRL = 3;
 	
 	//Enable interrupts on PIT0 and PIT1
@@ -78,7 +81,7 @@ void servo_hit(int servo_num){
 		if(servo_num == 1){
 			tap_dat_1 = 1; 
 			//Set servo angle to hit
-			servo1_angle = SERVO_HIT;
+			servo1_angle = SERVO1_HIT;
 			
 			/*
 			if(intflag == 0){
@@ -93,7 +96,7 @@ void servo_hit(int servo_num){
 		}
 		else if(servo_num == 2){
 			tap_dat_2 = 1;
-			servo2_angle = SERVO_HIT;
+			servo2_angle = SERVO2_HIT;
 			/*
 			if(intflag2 == 0){
 				intflag2 = 1;
