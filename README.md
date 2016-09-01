@@ -2,6 +2,8 @@
 
 Final Project for ECE 3140 - Embedded Systems - at Cornell University.
 
+Created By: Claire Chen and Yuqi (Mark) Zhao
+
 See Final Documentation for full details regarding project.
 
 
